@@ -579,3 +579,169 @@ Loading development environment (Rails 5.0.4)
   Staff Load (0.7ms)  SELECT `staffs`.* FROM `staffs` WHERE `staffs`.`department_id` = 2
  => #<ActiveRecord::Associations::CollectionProxy [#<Staff id: 5, staff_name: "Chhagar", department_id: 2, created_at: "2017-07-05 09:07:21", updated_at: "2017-07-05 09:07:21">]> 
 
+#Rails Guide Query Interface
+
+
+#FIND:
+
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/newTrainee/LMS$ rails c
+Running via Spring preloader in process 8133
+Loading development environment (Rails 5.0.4)
+2.3.1 :001 > s=Student.find(5)
+  Student Load (0.2ms)  SELECT  `students`.* FROM `students` WHERE `students`.`id` = 5 LIMIT 1
+ => #<Student id: 5, s_name: "vishal", dob: "1995-08-05", gender: "male", department_id: 2, created_at: "2017-07-05 08:47:31", updated_at: "2017-07-05 08:47:31"> 
+2.3.1 :002 > Department.find(4).staffs
+  Department Load (0.1ms)  SELECT  `departments`.* FROM `departments` WHERE `departments`.`id` = 4 LIMIT 1
+  Staff Load (0.3ms)  SELECT `staffs`.* FROM `staffs` WHERE `staffs`.`department_id` = 4
+ => #<ActiveRecord::Associations::CollectionProxy [#<Staff id: 3, staff_name: "Bhramchari", department_id: 4, created_at: "2017-07-05 09:06:23", updated_at: "2017-07-05 09:06:23">]> 
+2.3.1 :003 > Department.find(4).students
+  Department Load (0.7ms)  SELECT  `departments`.* FROM `departments` WHERE `departments`.`id` = 4 LIMIT 1
+  Student Load (0.3ms)  SELECT `students`.* FROM `students` WHERE `students`.`department_id` = 4
+ => #<ActiveRecord::Associations::CollectionProxy [#<Student id: 7, s_name: "sagar", dob: "1994-12-12", gender: "male", department_id: 4, created_at: "2017-07-05 08:49:32", updated_at: "2017-07-05 08:49:32">, #<Student id: 12, s_name: "mayank", dob: "1995-01-31", gender: "male", department_id: 4, created_at: "2017-07-05 08:54:39", updated_at: "2017-07-05 08:54:39">]> 
+2.3.1 :004 > Department.find(4).books
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` WHERE `departments`.`id` = 4 LIMIT 1
+  Book Load (0.3ms)  SELECT `books`.* FROM `books` WHERE `books`.`department_id` = 4
+ => #<ActiveRecord::Associations::CollectionProxy [#<Book id: 9, book_name: "Building Material", author_name: "Jia Khan", department_id: 4, created_at: "2017-07-05 09:03:51", updated_at: "2017-07-05 09:03:51">, #<Book id: 10, book_name: "Construction", author_name: "Rohini", department_id: 4, created_at: "2017-07-05 09:04:19", updated_at: "2017-07-05 09:04:19">]> 
+2.3.1 :008 > Student.find(5).records
+  Student Load (0.6ms)  SELECT  `students`.* FROM `students` WHERE `students`.`id` = 5 LIMIT 1
+  Record Load (0.3ms)  SELECT `records`.* FROM `records` WHERE `records`.`student_id` = 5
+ => #<ActiveRecord::Associations::CollectionProxy [#<Record id: 2, issued_date: "2017-05-02", sub_date: "2017-06-15", book_id: 5, student_id: 5, staff_id: 2, created_at: "2017-07-05 09:18:04", updated_at: "2017-07-05 09:18:04">, #<Record id: 4, issued_date: "2017-03-22", sub_date: "2016-11-16", book_id: 1, student_id: 5, staff_id: 3, created_at: "2017-07-05 09:18:48", updated_at: "2017-07-05 09:18:48">]> 
+2.3.1 :009 > d=Department.find(4).students
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` WHERE `departments`.`id` = 4 LIMIT 1
+  Student Load (0.6ms)  SELECT `students`.* FROM `students` WHERE `students`.`department_id` = 4
+ => #<ActiveRecord::Associations::CollectionProxy [#<Student id: 7, s_name: "sagar", dob: "1994-12-12", gender: "male", department_id: 4, created_at: "2017-07-05 08:49:32", updated_at: "2017-07-05 08:49:32">, #<Student id: 12, s_name: "mayank", dob: "1995-01-31", gender: "male", department_id: 4, created_at: "2017-07-05 08:54:39", updated_at: "2017-07-05 08:54:39">]> 
+2.3.1 :010 > d=Department.find(4).students[1]
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` WHERE `departments`.`id` = 4 LIMIT 1
+  Student Load (0.6ms)  SELECT `students`.* FROM `students` WHERE `students`.`department_id` = 4
+ => #<Student id: 12, s_name: "mayank", dob: "1995-01-31", gender: "male", department_id: 4, created_at: "2017-07-05 08:54:39", updated_at: "2017-07-05 08:54:39"> 
+2.3.1 :011 > d.records
+  Record Load (0.6ms)  SELECT `records`.* FROM `records` WHERE `records`.`student_id` = 12
+ => #<ActiveRecord::Associations::CollectionProxy []> 
+2.3.1 :013 > Student.find([1,5])
+  Student Load (0.7ms)  SELECT `students`.* FROM `students` WHERE `students`.`id` IN (1, 5)
+ => [#<Student id: 1, s_name: "dillep", dob: "1995-05-03", gender: "male", department_id: 1, created_at: "2017-07-05 08:43:11", updated_at: "2017-07-05 08:43:11">, #<Student id: 5, s_name: "vishal", dob: "1995-08-05", gender: "male", department_id: 2, created_at: "2017-07-05 08:47:31", updated_at: "2017-07-05 08:47:31">] 
+
+
+# TAKE:
+
+2.3.1 :014 > s = Student.take
+  Student Load (0.5ms)  SELECT  `students`.* FROM `students` LIMIT 1
+ => #<Student id: 1, s_name: "dillep", dob: "1995-05-03", gender: "male", department_id: 1, created_at: "2017-07-05 08:43:11", updated_at: "2017-07-05 08:43:11"> 
+2.3.1 :015 > s = Student.take(5)
+  Student Load (0.6ms)  SELECT  `students`.* FROM `students` LIMIT 5
+ => [#<Student id: 1, s_name: "dillep", dob: "1995-05-03", gender: "male", department_id: 1, created_at: "2017-07-05 08:43:11", updated_at: "2017-07-05 08:43:11">, #<Student id: 2, s_name: "chirag", dob: "1995-12-03", gender: "male", department_id: 1, created_at: "2017-07-05 08:44:03", updated_at: "2017-07-05 08:44:03">, #<Student id: 3, s_name: "rahul", dob: "1995-07-25", gender: "male", department_id: 1, created_at: "2017-07-05 08:44:23", updated_at: "2017-07-05 08:44:23">, #<Student id: 4, s_name: "vikas", dob: "1995-08-05", gender: "male", department_id: 2, created_at: "2017-07-05 08:46:36", updated_at: "2017-07-05 08:46:36">, #<Student id: 5, s_name: "vishal", dob: "1995-08-05", gender: "male", department_id: 2, created_at: "2017-07-05 08:47:31", updated_at: "2017-07-05 08:47:31">] 
+
+ #FIRST:
+
+ 2.3.1 :016 > Student.first
+  Student Load (0.6ms)  SELECT  `students`.* FROM `students` ORDER BY `students`.`id` ASC LIMIT 1
+ => #<Student id: 1, s_name: "dillep", dob: "1995-05-03", gender: "male", department_id: 1, created_at: "2017-07-05 08:43:11", updated_at: "2017-07-05 08:43:11"> 
+2.3.1 :017 > Student.first.records
+  Student Load (0.6ms)  SELECT  `students`.* FROM `students` ORDER BY `students`.`id` ASC LIMIT 1
+  Record Load (0.7ms)  SELECT `records`.* FROM `records` WHERE `records`.`student_id` = 1
+ => #<ActiveRecord::Associations::CollectionProxy [#<Record id: 5, issued_date: "2017-03-23", sub_date: "2017-05-16", book_id: 3, student_id: 1, staff_id: 2, created_at: "2017-07-05 09:18:59", updated_at: "2017-07-05 09:18:59">]> 
+
+2.3.1 :018 > Record.first.student
+  Record Load (0.6ms)  SELECT  `records`.* FROM `records` ORDER BY `records`.`id` ASC LIMIT 1
+  Student Load (0.5ms)  SELECT  `students`.* FROM `students` WHERE `students`.`id` = 7 LIMIT 1
+ => #<Student id: 7, s_name: "sagar", dob: "1994-12-12", gender: "male", department_id: 4, created_at: "2017-07-05 08:49:32", updated_at: "2017-07-05 08:49:32"> 
+2.3.1 :019 > d=Department.first.students
+  Department Load (0.7ms)  SELECT  `departments`.* FROM `departments` ORDER BY `departments`.`id` ASC LIMIT 1
+  Student Load (0.6ms)  SELECT `students`.* FROM `students` WHERE `students`.`department_id` = 1
+ => #<ActiveRecord::Associations::CollectionProxy [#<Student id: 1, s_name: "dillep", dob: "1995-05-03", gender: "male", department_id: 1, created_at: "2017-07-05 08:43:11", updated_at: "2017-07-05 08:43:11">, #<Student id: 2, s_name: "chirag", dob: "1995-12-03", gender: "male", department_id: 1, created_at: "2017-07-05 08:44:03", updated_at: "2017-07-05 08:44:03">, #<Student id: 3, s_name: "rahul", dob: "1995-07-25", gender: "male", department_id: 1, created_at: "2017-07-05 08:44:23", updated_at: "2017-07-05 08:44:23">, #<Student id: 9, s_name: "diksha", dob: "1996-02-21", gender: "female", department_id: 1, created_at: "2017-07-05 08:50:53", updated_at: "2017-07-05 08:50:53">]> 
+
+2.3.1 :020 > Staff.first.records
+  Staff Load (0.6ms)  SELECT  `staffs`.* FROM `staffs` ORDER BY `staffs`.`id` ASC LIMIT 1
+  Record Load (0.3ms)  SELECT `records`.* FROM `records` WHERE `records`.`staff_id` = 1
+ => #<ActiveRecord::Associations::CollectionProxy [#<Record id: 3, issued_date: "2016-03-22", sub_date: "2016-04-15", book_id: 2, student_id: 4, staff_id: 1, created_at: "2017-07-05 09:18:32", updated_at: "2017-07-05 09:18:32">, #<Record id: 9, issued_date: "2017-03-12", sub_date: "2017-05-06", book_id: 8, student_id: 8, staff_id: 1, created_at: "2017-07-05 09:20:43", updated_at: "2017-07-05 09:20:43">, #<Record id: 11, issued_date: "2017-02-12", sub_date: "2017-03-08", book_id: 8, student_id: 2, staff_id: 1, created_at: "2017-07-05 09:21:33", updated_at: "2017-07-05 09:21:33">]> 
+ 2.3.1 :022 > Staff.first(3)
+  Staff Load (0.6ms)  SELECT  `staffs`.* FROM `staffs` ORDER BY `staffs`.`id` ASC LIMIT 3
+ => [#<Staff id: 1, staff_name: "Sonal", department_id: 1, created_at: "2017-07-05 09:05:51", updated_at: "2017-07-05 09:05:51">, #<Staff id: 2, staff_name: "Sheenu", department_id: 1, created_at: "2017-07-05 09:06:00", updated_at: "2017-07-05 09:06:00">, #<Staff id: 3, staff_name: "Bhramchari", department_id: 4, created_at: "2017-07-05 09:06:23", updated_at: "2017-07-05 09:06:23">] 
+
+
+2.3.1 :024 > Student.order(:s_name).first
+  Student Load (0.7ms)  SELECT  `students`.* FROM `students` ORDER BY `students`.`s_name` ASC LIMIT 1
+ => #<Student id: 6, s_name: "chhaya", dob: "1995-08-22", gender: "female", department_id: 2, created_at: "2017-07-05 08:48:48", updated_at: "2017-07-05 08:48:48"> 
+2.3.1 :025 > Student.order(:s_name).first(3)
+  Student Load (0.6ms)  SELECT  `students`.* FROM `students` ORDER BY `students`.`s_name` ASC LIMIT 3
+ => [#<Student id: 6, s_name: "chhaya", dob: "1995-08-22", gender: "female", department_id: 2, created_at: "2017-07-05 08:48:48", updated_at: "2017-07-05 08:48:48">, #<Student id: 2, s_name: "chirag", dob: "1995-12-03", gender: "male", department_id: 1, created_at: "2017-07-05 08:44:03", updated_at: "2017-07-05 08:44:03">, #<Student id: 9, s_name: "diksha", dob: "1996-02-21", gender: "female", department_id: 1, created_at: "2017-07-05 08:50:53", updated_at: "2017-07-05 08:50:53">] 
+2.3.1 :026 > Student.last
+  Student Load (0.6ms)  SELECT  `students`.* FROM `students` ORDER BY `students`.`id` DESC LIMIT 1
+ => #<Student id: 12, s_name: "mayank", dob: "1995-01-31", gender: "male", department_id: 4, created_at: "2017-07-05 08:54:39", updated_at: "2017-07-05 08:54:39"> 
+2.3.1 :027 > Student.last(5)
+  Student Load (0.6ms)  SELECT  `students`.* FROM `students` ORDER BY `students`.`id` DESC LIMIT 5
+ => [#<Student id: 8, s_name: "rinku", dob: "1995-01-26", gender: "male", department_id: 2, created_at: "2017-07-05 08:50:05", updated_at: "2017-07-05 08:50:05">, #<Student id: 9, s_name: "diksha", dob: "1996-02-21", gender: "female", department_id: 1, created_at: "2017-07-05 08:50:53", updated_at: "2017-07-05 08:50:53">, #<Student id: 10, s_name: "preeti", dob: "1994-07-02", gender: "female", department_id: 3, created_at: "2017-07-05 08:53:19", updated_at: "2017-07-05 08:53:19">, #<Student id: 11, s_name: "mohit", dob: "1995-07-22", gender: "male", department_id: 3, created_at: "2017-07-05 08:54:08", updated_at: "2017-07-05 08:54:08">, #<Student id: 12, s_name: "mayank", dob: "1995-01-31", gender: "male", department_id: 4, created_at: "2017-07-05 08:54:39", updated_at: "2017-07-05 08:54:39">] 
+2.3.1 :028 > Student.order(:s_name).last(5)
+  Student Load (0.7ms)  SELECT  `students`.* FROM `students` ORDER BY `students`.`s_name` DESC LIMIT 5
+ => [#<Student id: 3, s_name: "rahul", dob: "1995-07-25", gender: "male", department_id: 1, created_at: "2017-07-05 08:44:23", updated_at: "2017-07-05 08:44:23">, #<Student id: 8, s_name: "rinku", dob: "1995-01-26", gender: "male", department_id: 2, created_at: "2017-07-05 08:50:05", updated_at: "2017-07-05 08:50:05">, #<Student id: 7, s_name: "sagar", dob: "1994-12-12", gender: "male", department_id: 4, created_at: "2017-07-05 08:49:32", updated_at: "2017-07-05 08:49:32">, #<Student id: 4, s_name: "vikas", dob: "1995-08-05", gender: "male", department_id: 2, created_at: "2017-07-05 08:46:36", updated_at: "2017-07-05 08:46:36">, #<Student id: 5, s_name: "vishal", dob: "1995-08-05", gender: "male", department_id: 2, created_at: "2017-07-05 08:47:31", updated_at: "2017-07-05 08:47:31">] 
+
+
+#FIND_EACH:
+
+2.3.1 :032 > Student.find_each(batch_size:3) do |s|
+2.3.1 :033 >     s.s_name
+2.3.1 :034?>   end
+  Student Load (0.6ms)  SELECT  `students`.* FROM `students` ORDER BY `students`.`id` ASC LIMIT 3
+  Student Load (0.7ms)  SELECT  `students`.* FROM `students` WHERE (`students`.`id` > 3) ORDER BY `students`.`id` ASC LIMIT 3
+  Student Load (0.6ms)  SELECT  `students`.* FROM `students` WHERE (`students`.`id` > 6) ORDER BY `students`.`id` ASC LIMIT 3
+  Student Load (0.6ms)  SELECT  `students`.* FROM `students` WHERE (`students`.`id` > 9) ORDER BY `students`.`id` ASC LIMIT 3
+  Student Load (0.5ms)  SELECT  `students`.* FROM `students` WHERE (`students`.`id` > 12) ORDER BY `students`.`id` ASC LIMIT 3
+ => nil 
+2.3.1 :035 > Student.find_each(batch_size:3) do |s|
+2.3.1 :036 >     puts s.s_name
+2.3.1 :037?>   end
+  Student Load (0.6ms)  SELECT  `students`.* FROM `students` ORDER BY `students`.`id` ASC LIMIT 3
+dillep
+chirag
+rahul
+  Student Load (0.6ms)  SELECT  `students`.* FROM `students` WHERE (`students`.`id` > 3) ORDER BY `students`.`id` ASC LIMIT 3
+vikas
+vishal
+chhaya
+  Student Load (0.6ms)  SELECT  `students`.* FROM `students` WHERE (`students`.`id` > 6) ORDER BY `students`.`id` ASC LIMIT 3
+sagar
+rinku
+diksha
+  Student Load (0.6ms)  SELECT  `students`.* FROM `students` WHERE (`students`.`id` > 9) ORDER BY `students`.`id` ASC LIMIT 3
+preeti
+mohit
+mayank
+  Student Load (0.5ms)  SELECT  `students`.* FROM `students` WHERE (`students`.`id` > 12) ORDER BY `students`.`id` ASC LIMIT 3
+ => nil 
+
+ # :start
+
+ 2.3.1 :070 > Student.find_each(start:2) do |s|
+2.3.1 :071 >     puts s.s_name
+2.3.1 :072?>   end
+  Student Load (0.7ms)  SELECT  `students`.* FROM `students` WHERE (`students`.`id` >= 2) ORDER BY `students`.`id` ASC LIMIT 1000
+chirag
+rahul
+vikas
+vishal
+chhaya
+sagar
+rinku
+diksha
+preeti
+mohit
+mayank
+ => nil 
+
+
+#:start,:finish
+
+2.3.1 :073 > Student.find_each(start:2,finish:10) do |s|
+2.3.1 :074 >     puts s.s_name
+2.3.1 :075?>   end
+  Student Load (0.8ms)  SELECT  `students`.* FROM `students` WHERE (`students`.`id` >= 2) AND (`students`.`id` <= 10) ORDER BY `students`.`id` ASC LIMIT 1000
+chirag
+rahul
+vikas
+vishal
+chhaya
+sagar
+rinku
+diksha
+preeti
+ => nil 
