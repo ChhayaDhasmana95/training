@@ -1,0 +1,581 @@
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/newTrainee/LMS$ mysql -u root -proot
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 21
+Server version: 5.7.18-0ubuntu0.16.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use library
+Database changed
+mysql> show tables;
+Empty set (0.00 sec)
+
+mysql> show tables;
++----------------------+
+| Tables_in_library    |
++----------------------+
+| ar_internal_metadata |
+| departments          |
+| schema_migrations    |
+| staffs               |
+| students             |
++----------------------+
+5 rows in set (0.00 sec)
+
+mysql> desc students;
++---------------+--------------+------+-----+---------+----------------+
+| Field         | Type         | Null | Key | Default | Extra          |
++---------------+--------------+------+-----+---------+----------------+
+| id            | int(11)      | NO   | PRI | NULL    | auto_increment |
+| name          | varchar(255) | YES  |     | NULL    |                |
+| dob           | date         | YES  |     | NULL    |                |
+| gender        | varchar(255) | YES  |     | NULL    |                |
+| department_id | int(11)      | YES  | MUL | NULL    |                |
+| created_at    | datetime     | NO   |     | NULL    |                |
+| updated_at    | datetime     | NO   |     | NULL    |                |
++---------------+--------------+------+-----+---------+----------------+
+7 rows in set (0.00 sec)
+
+mysql> show tables;
++----------------------+
+| Tables_in_library    |
++----------------------+
+| ar_internal_metadata |
+| books                |
+| departments          |
+| schema_migrations    |
+| staffs               |
+| students             |
++----------------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from students;
++----+--------+------------+--------+---------------+---------------------+---------------------+
+| id | name   | dob        | gender | department_id | created_at          | updated_at          |
++----+--------+------------+--------+---------------+---------------------+---------------------+
+|  1 | chhaya | 1995-08-22 | female |             1 | 2017-07-05 06:05:02 | 2017-07-05 06:05:02 |
+|  2 | diksha | 1996-02-21 | female |             1 | 2017-07-05 06:05:34 | 2017-07-05 06:05:34 |
+|  3 | rinku  | 1995-01-26 | male   |             2 | 2017-07-05 06:06:10 | 2017-07-05 06:06:10 |
+|  4 | vishal | 1995-08-05 | male   |             2 | 2017-07-05 06:06:37 | 2017-07-05 06:06:37 |
+|  5 | vikas  | 1995-08-05 | male   |             2 | 2017-07-05 06:06:50 | 2017-07-05 06:06:50 |
+|  6 | sagar  | 1994-12-12 | male   |             3 | 2017-07-05 06:07:19 | 2017-07-05 06:07:19 |
+|  7 | preeti | 1994-07-02 | female |             4 | 2017-07-05 06:08:29 | 2017-07-05 06:08:29 |
+|  8 | rahul  | 1995-07-25 | male   |             4 | 2017-07-05 06:09:15 | 2017-07-05 06:09:15 |
+|  9 | chirag | 1995-12-03 | male   |             1 | 2017-07-05 06:09:40 | 2017-07-05 06:09:40 |
+| 10 | dillep | 1995-05-03 | male   |             1 | 2017-07-05 06:09:57 | 2017-07-05 06:09:57 |
++----+--------+------------+--------+---------------+---------------------+---------------------+
+10 rows in set (0.00 sec)
+
+mysql> select* from departments;
++----+-----------+---------------------+---------------------+
+| id | dept_name | created_at          | updated_at          |
++----+-----------+---------------------+---------------------+
+|  1 | CSE       | 2017-07-05 06:00:35 | 2017-07-05 06:00:35 |
+|  2 | ME        | 2017-07-05 06:00:44 | 2017-07-05 06:00:44 |
+|  3 | CE        | 2017-07-05 06:00:51 | 2017-07-05 06:01:46 |
+|  4 | ECE       | 2017-07-05 06:01:08 | 2017-07-05 06:01:08 |
++----+-----------+---------------------+---------------------+
+4 rows in set (0.00 sec)
+
+mysql> select* from departments;
+Empty set (0.00 sec)
+
+mysql> select * from departments;
+Empty set (0.00 sec)
+
+mysql> select * from students;
+Empty set (0.00 sec)
+
+mysql> select * from students;
++----+--------+------------+--------+---------------+---------------------+---------------------+
+| id | s_name | dob        | gender | department_id | created_at          | updated_at          |
++----+--------+------------+--------+---------------+---------------------+---------------------+
+|  1 | dillep | 1995-05-03 | male   |             1 | 2017-07-05 06:16:38 | 2017-07-05 06:16:38 |
+|  2 | chirag | 1995-12-03 | male   |             1 | 2017-07-05 06:16:54 | 2017-07-05 06:16:54 |
+|  3 | rahul  | 1995-07-25 | male   |             4 | 2017-07-05 06:17:14 | 2017-07-05 06:17:14 |
+|  4 | preeti | 1994-07-02 | female |             4 | 2017-07-05 06:17:42 | 2017-07-05 06:17:42 |
+|  5 | sagar  | 1994-12-12 | male   |             3 | 2017-07-05 06:17:56 | 2017-07-05 06:17:56 |
+|  6 | vikas  | 1995-08-05 | male   |             2 | 2017-07-05 06:18:08 | 2017-07-05 06:18:08 |
+|  7 | vishal | 1995-08-05 | male   |             2 | 2017-07-05 06:18:22 | 2017-07-05 06:18:22 |
+|  8 | rinku  | 1995-01-26 | male   |             2 | 2017-07-05 06:18:36 | 2017-07-05 06:18:36 |
+|  9 | diksha | 1996-02-21 | female |             1 | 2017-07-05 06:18:56 | 2017-07-05 06:18:56 |
+| 10 | chhaya | 1995-08-22 | female |             1 | 2017-07-05 06:19:11 | 2017-07-05 06:19:11 |
++----+--------+------------+--------+---------------+---------------------+---------------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from departments;
++----+-----------+---------------------+---------------------+
+| id | dept_name | created_at          | updated_at          |
++----+-----------+---------------------+---------------------+
+|  1 | CSE       | 2017-07-05 06:15:42 | 2017-07-05 06:15:42 |
+|  2 | ME        | 2017-07-05 06:15:59 | 2017-07-05 06:15:59 |
+|  3 | CE        | 2017-07-05 06:16:08 | 2017-07-05 06:16:08 |
+|  4 | ECE       | 2017-07-05 06:16:14 | 2017-07-05 06:16:14 |
++----+-----------+---------------------+---------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from book;
+ERROR 1146 (42S02): Table 'library.book' doesn't exist
+mysql> select * from books;
++----+-------------------+-------------+---------------+---------------------+---------------------+
+| id | book_name         | author_name | department_id | created_at          | updated_at          |
++----+-------------------+-------------+---------------+---------------------+---------------------+
+|  1 | TOC               | Micheal     |             1 | 2017-07-05 06:24:19 | 2017-07-05 06:24:19 |
+|  2 | CD                | William     |             1 | 2017-07-05 06:24:49 | 2017-07-05 06:24:49 |
+|  3 | OS                | William     |             1 | 2017-07-05 06:25:10 | 2017-07-05 06:25:10 |
+|  4 | Thermo            | Robert      |             2 | 2017-07-05 06:25:29 | 2017-07-05 06:25:29 |
+|  5 | Turbine           | Shakes      |             2 | 2017-07-05 06:26:09 | 2017-07-05 06:26:09 |
+|  6 | CAD               | M.William   |             2 | 2017-07-05 06:26:33 | 2017-07-05 06:26:33 |
+|  7 | SemiConductor     | Martz       |             4 | 2017-07-05 06:27:05 | 2017-07-05 06:31:01 |
+|  8 | Electric current  | Mahul       |             4 | 2017-07-05 06:27:32 | 2017-07-05 06:32:19 |
+|  9 | Building Material | MAMbuja     |             3 | 2017-07-05 06:28:35 | 2017-07-05 06:28:35 |
++----+-------------------+-------------+---------------+---------------------+---------------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from staffs;
++----+------------+---------------+---------------------+---------------------+
+| id | staff_name | department_id | created_at          | updated_at          |
++----+------------+---------------+---------------------+---------------------+
+|  1 | Amit       |             4 | 2017-07-05 06:34:27 | 2017-07-05 06:34:27 |
+|  2 | Sonal      |             1 | 2017-07-05 06:34:41 | 2017-07-05 06:34:41 |
+|  3 | Chhaggar   |             2 | 2017-07-05 06:35:08 | 2017-07-05 06:35:08 |
+|  4 | Bhramchari |             3 | 2017-07-05 06:35:29 | 2017-07-05 06:35:29 |
++----+------------+---------------+---------------------+---------------------+
+4 rows in set (0.01 sec)
+
+mysql> selct * from records;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selct * from records' at line 1
+mysql> select * from records;
++----+-------------+------------+---------+------------+----------+---------------------+---------------------+
+| id | issued_date | sub_date   | book_id | student_id | staff_id | created_at          | updated_at          |
++----+-------------+------------+---------+------------+----------+---------------------+---------------------+
+|  1 | 2017-05-02  | 2017-06-15 |       5 |          5 |        2 | 2017-07-05 06:39:26 | 2017-07-05 06:39:26 |
+|  2 | 2016-03-22  | 2016-04-15 |       2 |          4 |        1 | 2017-07-05 06:40:20 | 2017-07-05 06:40:20 |
+|  3 | 2017-03-22  | 2016-11-16 |       1 |          5 |        3 | 2017-07-05 06:41:07 | 2017-07-05 06:41:07 |
+|  4 | 2017-03-23  | 2017-05-16 |       3 |          1 |        2 | 2017-07-05 06:41:51 | 2017-07-05 06:41:51 |
+|  5 | 2017-02-25  | 2017-04-21 |       3 |          3 |        4 | 2017-07-05 06:42:32 | 2017-07-05 06:42:32 |
+|  6 | 2017-05-14  | 2017-06-02 |       6 |          4 |        3 | 2017-07-05 06:43:21 | 2017-07-05 06:43:21 |
+|  7 | 2017-04-12  | 2017-05-16 |       7 |          6 |        2 | 2017-07-05 06:43:58 | 2017-07-05 06:43:58 |
+|  8 | 2017-03-12  | 2017-05-06 |       8 |          8 |        1 | 2017-07-05 06:44:55 | 2017-07-05 06:44:55 |
+|  9 | 2017-02-12  | 2017-03-08 |       9 |          9 |        2 | 2017-07-05 06:46:17 | 2017-07-05 06:46:17 |
+| 10 | 2017-02-12  | 2017-03-08 |       8 |          2 |        1 | 2017-07-05 06:46:33 | 2017-07-05 06:46:33 |
+| 11 | 2017-01-10  | 2017-03-08 |       4 |          7 |        2 | 2017-07-05 06:47:11 | 2017-07-05 06:47:11 |
+| 12 | 2017-03-10  | 2017-04-26 |       7 |          9 |        4 | 2017-07-05 06:47:56 | 2017-07-05 06:47:56 |
++----+-------------+------------+---------+------------+----------+---------------------+---------------------+
+12 rows in set (0.00 sec)
+
+mysql> select b.dept_name from students inner join departments on a.department_id=b.department_id where a.s_name="chhaya";
+ERROR 1054 (42S22): Unknown column 'b.dept_name' in 'field list'
+mysql> select dept_name from students inner join departments on a.department_id=b.department_id where a.s_name="chhaya";
+ERROR 1054 (42S22): Unknown column 'a.s_name' in 'where clause'
+mysql> select dept_name from students inner join departments on a.department_id=b.department_id where s_name="chhaya";
+ERROR 1054 (42S22): Unknown column 'a.department_id' in 'on clause'
+mysql> selct * from records;                                                   ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'selct * from records' at line 1
+mysql> select * from records;                                                   Empty set (0.00 sec)
+
+mysql> select * from students;
++----+--------+------------+--------+---------------+---------------------+---------------------+
+| id | s_name | dob        | gender | department_id | created_at          | updated_at          |
++----+--------+------------+--------+---------------+---------------------+---------------------+
+|  1 | dillep | 1995-05-03 | male   |             1 | 2017-07-05 08:43:11 | 2017-07-05 08:43:11 |
+|  2 | chirag | 1995-12-03 | male   |             1 | 2017-07-05 08:44:03 | 2017-07-05 08:44:03 |
+|  3 | rahul  | 1995-07-25 | male   |             1 | 2017-07-05 08:44:23 | 2017-07-05 08:44:23 |
+|  4 | vikas  | 1995-08-05 | male   |             2 | 2017-07-05 08:46:36 | 2017-07-05 08:46:36 |
+|  5 | vishal | 1995-08-05 | male   |             2 | 2017-07-05 08:47:31 | 2017-07-05 08:47:31 |
+|  6 | chhaya | 1995-08-22 | female |             2 | 2017-07-05 08:48:48 | 2017-07-05 08:48:48 |
+|  7 | sagar  | 1994-12-12 | male   |             4 | 2017-07-05 08:49:32 | 2017-07-05 08:49:32 |
+|  8 | rinku  | 1995-01-26 | male   |             2 | 2017-07-05 08:50:05 | 2017-07-05 08:50:05 |
+|  9 | diksha | 1996-02-21 | female |             1 | 2017-07-05 08:50:53 | 2017-07-05 08:50:53 |
++----+--------+------------+--------+---------------+---------------------+---------------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from students ;
++----+--------+------------+--------+---------------+---------------------+---------------------+
+| id | s_name | dob        | gender | department_id | created_at          | updated_at          |
++----+--------+------------+--------+---------------+---------------------+---------------------+
+|  1 | dillep | 1995-05-03 | male   |             1 | 2017-07-05 08:43:11 | 2017-07-05 08:43:11 |
+|  2 | chirag | 1995-12-03 | male   |             1 | 2017-07-05 08:44:03 | 2017-07-05 08:44:03 |
+|  3 | rahul  | 1995-07-25 | male   |             1 | 2017-07-05 08:44:23 | 2017-07-05 08:44:23 |
+|  4 | vikas  | 1995-08-05 | male   |             2 | 2017-07-05 08:46:36 | 2017-07-05 08:46:36 |
+|  5 | vishal | 1995-08-05 | male   |             2 | 2017-07-05 08:47:31 | 2017-07-05 08:47:31 |
+|  6 | chhaya | 1995-08-22 | female |             2 | 2017-07-05 08:48:48 | 2017-07-05 08:48:48 |
+|  7 | sagar  | 1994-12-12 | male   |             4 | 2017-07-05 08:49:32 | 2017-07-05 08:49:32 |
+|  8 | rinku  | 1995-01-26 | male   |             2 | 2017-07-05 08:50:05 | 2017-07-05 08:50:05 |
+|  9 | diksha | 1996-02-21 | female |             1 | 2017-07-05 08:50:53 | 2017-07-05 08:50:53 |
+| 10 | preeti | 1994-07-02 | female |             3 | 2017-07-05 08:53:19 | 2017-07-05 08:53:19 |
+| 11 | mohit  | 1995-07-22 | male   |             3 | 2017-07-05 08:54:08 | 2017-07-05 08:54:08 |
+| 12 | mayank | 1995-01-31 | male   |             4 | 2017-07-05 08:54:39 | 2017-07-05 08:54:39 |
++----+--------+------------+--------+---------------+---------------------+---------------------+
+12 rows in set (0.00 sec)
+
+mysql> select * from departments;
++----+-----------+---------------------+---------------------+
+| id | dept_name | created_at          | updated_at          |
++----+-----------+---------------------+---------------------+
+|  1 | CSE       | 2017-07-05 08:38:03 | 2017-07-05 08:38:03 |
+|  2 | ME        | 2017-07-05 08:38:13 | 2017-07-05 08:38:13 |
+|  3 | ECE       | 2017-07-05 08:38:19 | 2017-07-05 08:38:19 |
+|  4 | CE        | 2017-07-05 08:38:26 | 2017-07-05 08:38:26 |
++----+-----------+---------------------+---------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from books;
++----+------------------+-------------+---------------+---------------------+---------------------+
+| id | book_name        | author_name | department_id | created_at          | updated_at          |
++----+------------------+-------------+---------------+---------------------+---------------------+
+|  1 | TOC              | Micheal     |             1 | 2017-07-05 08:56:51 | 2017-07-05 08:56:51 |
+|  2 | CD               | William     |             1 | 2017-07-05 08:57:30 | 2017-07-05 08:57:30 |
+|  3 | OS               | William     |             1 | 2017-07-05 08:58:17 | 2017-07-05 08:58:17 |
+|  4 | Thermo           | Robert      |             2 | 2017-07-05 08:58:54 | 2017-07-05 08:58:54 |
+|  5 | Turbine          | Shakes      |             2 | 2017-07-05 08:59:49 | 2017-07-05 08:59:49 |
+|  6 | CAD              | M.William   |             2 | 2017-07-05 09:00:36 | 2017-07-05 09:00:36 |
+|  7 | SemiConductor    | Martz       |             3 | 2017-07-05 09:01:38 | 2017-07-05 09:01:38 |
+|  8 | Electric current | Mahul       |             3 | 2017-07-05 09:02:13 | 2017-07-05 09:02:13 |
++----+------------------+-------------+---------------+---------------------+---------------------+
+8 rows in set (0.00 sec)
+
+mysql> select * from books;
++----+-------------------+-------------+---------------+---------------------+---------------------+
+| id | book_name         | author_name | department_id | created_at          | updated_at          |
++----+-------------------+-------------+---------------+---------------------+---------------------+
+|  1 | TOC               | Micheal     |             1 | 2017-07-05 08:56:51 | 2017-07-05 08:56:51 |
+|  2 | CD                | William     |             1 | 2017-07-05 08:57:30 | 2017-07-05 08:57:30 |
+|  3 | OS                | William     |             1 | 2017-07-05 08:58:17 | 2017-07-05 08:58:17 |
+|  4 | Thermo            | Robert      |             2 | 2017-07-05 08:58:54 | 2017-07-05 08:58:54 |
+|  5 | Turbine           | Shakes      |             2 | 2017-07-05 08:59:49 | 2017-07-05 08:59:49 |
+|  6 | CAD               | M.William   |             2 | 2017-07-05 09:00:36 | 2017-07-05 09:00:36 |
+|  7 | SemiConductor     | Martz       |             3 | 2017-07-05 09:01:38 | 2017-07-05 09:01:38 |
+|  8 | Electric current  | Mahul       |             3 | 2017-07-05 09:02:13 | 2017-07-05 09:02:13 |
+|  9 | Building Material | Jia Khan    |             4 | 2017-07-05 09:03:51 | 2017-07-05 09:03:51 |
+| 10 | Construction      | Rohini      |             4 | 2017-07-05 09:04:19 | 2017-07-05 09:04:19 |
++----+-------------------+-------------+---------------+---------------------+---------------------+
+10 rows in set (0.00 sec)
+
+mysql> select * from records;
++----+-------------+------------+---------+------------+----------+---------------------+---------------------+
+| id | issued_date | sub_date   | book_id | student_id | staff_id | created_at          | updated_at          |
++----+-------------+------------+---------+------------+----------+---------------------+---------------------+
+|  1 | 2017-01-10  | 2017-03-08 |       4 |          7 |        2 | 2017-07-05 09:15:38 | 2017-07-05 09:15:38 |
+|  2 | 2017-05-02  | 2017-06-15 |       5 |          5 |        2 | 2017-07-05 09:18:04 | 2017-07-05 09:18:04 |
+|  3 | 2016-03-22  | 2016-04-15 |       2 |          4 |        1 | 2017-07-05 09:18:32 | 2017-07-05 09:18:32 |
+|  4 | 2017-03-22  | 2016-11-16 |       1 |          5 |        3 | 2017-07-05 09:18:48 | 2017-07-05 09:18:48 |
+|  5 | 2017-03-23  | 2017-05-16 |       3 |          1 |        2 | 2017-07-05 09:18:59 | 2017-07-05 09:18:59 |
+|  6 | 2017-02-25  | 2017-04-21 |       3 |          3 |        4 | 2017-07-05 09:19:17 | 2017-07-05 09:19:17 |
+|  7 | 2017-05-14  | 2017-06-02 |       6 |          4 |        3 | 2017-07-05 09:19:32 | 2017-07-05 09:19:32 |
+|  8 | 2017-04-12  | 2017-05-16 |       7 |          6 |        2 | 2017-07-05 09:19:56 | 2017-07-05 09:19:56 |
+|  9 | 2017-03-12  | 2017-05-06 |       8 |          8 |        1 | 2017-07-05 09:20:43 | 2017-07-05 09:20:43 |
+| 10 | 2017-02-12  | 2017-03-08 |       9 |          9 |        2 | 2017-07-05 09:21:17 | 2017-07-05 09:21:17 |
+| 11 | 2017-02-12  | 2017-03-08 |       8 |          2 |        1 | 2017-07-05 09:21:33 | 2017-07-05 09:21:33 |
++----+-------------+------------+---------+------------+----------+---------------------+---------------------+
+11 rows in set (0.00 sec)
+
+#QUERY iNTERFACE:
+
+
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/newTrainee/LMS$ rails c
+Running via Spring preloader in process 6150
+Loading development environment (Rails 5.0.4)
+2.3.1 :001 > s=Student.first
+  Student Load (0.3ms)  SELECT  `students`.* FROM `students` ORDER BY `students`.`id` ASC LIMIT 1
+ => #<Student id: 1, s_name: "dillep", dob: "1995-05-03", gender: "male", department_id: 1, created_at: "2017-07-05 06:16:38", updated_at: "2017-07-05 06:16:38"> 
+beryl@beryl-To-be-filled-by-O-E-M:~/Desktop/newTrainee/LMS$ rails c
+Running via Spring preloader in process 6757
+Loading development environment (Rails 5.0.4)
+2.3.1 :001 > Department.create(dept_name:"CSE")   (0.2ms)  BEGIN
+  SQL (0.2ms)  INSERT INTO `departments` (`dept_name`, `created_at`, `updated_at`) VALUES ('CSE', '2017-07-05 08:38:03', '2017-07-05 08:38:03')
+   (53.6ms)  COMMIT
+ => #<Department id: 1, dept_name: "CSE", created_at: "2017-07-05 08:38:03", updated_at: "2017-07-05 08:38:03"> 
+2.3.1 :002 > Department.create(dept_name:"ME")
+   (0.3ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO `departments` (`dept_name`, `created_at`, `updated_at`) VALUES ('ME', '2017-07-05 08:38:13', '2017-07-05 08:38:13')
+   (103.5ms)  COMMIT
+ => #<Department id: 2, dept_name: "ME", created_at: "2017-07-05 08:38:13", updated_at: "2017-07-05 08:38:13"> 
+2.3.1 :003 > Department.create(dept_name:"ECE")
+   (0.3ms)  BEGIN
+  SQL (0.7ms)  INSERT INTO `departments` (`dept_name`, `created_at`, `updated_at`) VALUES ('ECE', '2017-07-05 08:38:19', '2017-07-05 08:38:19')
+   (44.3ms)  COMMIT
+ => #<Department id: 3, dept_name: "ECE", created_at: "2017-07-05 08:38:19", updated_at: "2017-07-05 08:38:19"> 
+2.3.1 :004 > Department.create(dept_name:"CE")
+   (0.3ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO `departments` (`dept_name`, `created_at`, `updated_at`) VALUES ('CE', '2017-07-05 08:38:26', '2017-07-05 08:38:26')
+   (87.2ms)  COMMIT
+ => #<Department id: 4, dept_name: "CE", created_at: "2017-07-05 08:38:26", updated_at: "2017-07-05 08:38:26"> 
+2.3.1 :005 > d=
+2.3.1 :006 >   d=Department.first
+  Department Load (0.7ms)  SELECT  `departments`.* FROM `departments` ORDER BY `departments`.`id` ASC LIMIT 1
+ => #<Department id: 1, dept_name: "CSE", created_at: "2017-07-05 08:38:03", updated_at: "2017-07-05 08:38:03"> 
+2.3.1 :007 > d.students.create(s_name:"dillep",dob:"1995-05-03",gender:"male",department_id:1)
+   (0.2ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO `students` (`s_name`, `dob`, `gender`, `department_id`, `created_at`, `updated_at`) VALUES ('dillep', '1995-05-03', 'male', 1, '2017-07-05 08:43:11', '2017-07-05 08:43:11')
+   (54.5ms)  COMMIT
+ => #<Student id: 1, s_name: "dillep", dob: "1995-05-03", gender: "male", department_id: 1, created_at: "2017-07-05 08:43:11", updated_at: "2017-07-05 08:43:11"> 
+2.3.1 :008 > d.students.create(s_name:"chirag",dob:"1995-12-03",gender:"male",department_id:1)
+   (0.3ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO `students` (`s_name`, `dob`, `gender`, `department_id`, `created_at`, `updated_at`) VALUES ('chirag', '1995-12-03', 'male', 1, '2017-07-05 08:44:03', '2017-07-05 08:44:03')
+   (101.0ms)  COMMIT
+ => #<Student id: 2, s_name: "chirag", dob: "1995-12-03", gender: "male", department_id: 1, created_at: "2017-07-05 08:44:03", updated_at: "2017-07-05 08:44:03"> 
+2.3.1 :009 > d.students.create(s_name:"rahul",dob:"1995-07-25",gender:"male",department_id:4)
+   (0.3ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO `students` (`s_name`, `dob`, `gender`, `department_id`, `created_at`, `updated_at`) VALUES ('rahul', '1995-07-25', 'male', 1, '2017-07-05 08:44:23', '2017-07-05 08:44:23')
+   (58.2ms)  COMMIT
+ => #<Student id: 3, s_name: "rahul", dob: "1995-07-25", gender: "male", department_id: 1, created_at: "2017-07-05 08:44:23", updated_at: "2017-07-05 08:44:23"> 
+2.3.1 :010 > d=Department.find(2)
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` WHERE `departments`.`id` = 2 LIMIT 1
+ => #<Department id: 2, dept_name: "ME", created_at: "2017-07-05 08:38:13", updated_at: "2017-07-05 08:38:13"> 
+2.3.1 :011 > d.students.create(s_name:"vikas",dob:"1995-08-05",gender:"male")
+   (0.3ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO `students` (`s_name`, `dob`, `gender`, `department_id`, `created_at`, `updated_at`) VALUES ('vikas', '1995-08-05', 'male', 2, '2017-07-05 08:46:36', '2017-07-05 08:46:36')
+   (87.1ms)  COMMIT
+ => #<Student id: 4, s_name: "vikas", dob: "1995-08-05", gender: "male", department_id: 2, created_at: "2017-07-05 08:46:36", updated_at: "2017-07-05 08:46:36"> 
+2.3.1 :012 > d.students.create(s_name:"vishal",dob:"1995-08-05",gender:"male")
+   (0.3ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO `students` (`s_name`, `dob`, `gender`, `department_id`, `created_at`, `updated_at`) VALUES ('vishal', '1995-08-05', 'male', 2, '2017-07-05 08:47:31', '2017-07-05 08:47:31')
+   (53.1ms)  COMMIT
+ => #<Student id: 5, s_name: "vishal", dob: "1995-08-05", gender: "male", department_id: 2, created_at: "2017-07-05 08:47:31", updated_at: "2017-07-05 08:47:31"> 
+2.3.1 :015 > d.students.create(s_name:"chhaya",dob:"1995-08-22",gender:"female")
+   (0.3ms)  BEGIN
+  SQL (0.6ms)  INSERT INTO `students` (`s_name`, `dob`, `gender`, `department_id`, `created_at`, `updated_at`) VALUES ('chhaya', '1995-08-22', 'female', 2, '2017-07-05 08:48:48', '2017-07-05 08:48:48')
+   (104.9ms)  COMMIT
+ => #<Student id: 6, s_name: "chhaya", dob: "1995-08-22", gender: "female", department_id: 2, created_at: "2017-07-05 08:48:48", updated_at: "2017-07-05 08:48:48"> 
+2.3.1 :016 > Department.last.students.create(s_name:"sagar",dob:"1994-12-12",gender:"male")
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` ORDER BY `departments`.`id` DESC LIMIT 1
+   (0.3ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO `students` (`s_name`, `dob`, `gender`, `department_id`, `created_at`, `updated_at`) VALUES ('sagar', '1994-12-12', 'male', 4, '2017-07-05 08:49:32', '2017-07-05 08:49:32')
+   (55.7ms)  COMMIT
+ => #<Student id: 7, s_name: "sagar", dob: "1994-12-12", gender: "male", department_id: 4, created_at: "2017-07-05 08:49:32", updated_at: "2017-07-05 08:49:32"> 
+2.3.1 :017 > d.students.create(s_name:"rinku",dob:"1995-01-26",gender:"male")
+   (0.3ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO `students` (`s_name`, `dob`, `gender`, `department_id`, `created_at`, `updated_at`) VALUES ('rinku', '1995-01-26', 'male', 2, '2017-07-05 08:50:05', '2017-07-05 08:50:05')
+   (106.8ms)  COMMIT
+ => #<Student id: 8, s_name: "rinku", dob: "1995-01-26", gender: "male", department_id: 2, created_at: "2017-07-05 08:50:05", updated_at: "2017-07-05 08:50:05"> 
+2.3.1 :018 > Department.first.students.create(s_name:"diksha",dob:"1996-02-21",gender:"female")
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` ORDER BY `departments`.`id` ASC LIMIT 1
+   (0.3ms)  BEGIN
+  SQL (0.2ms)  INSERT INTO `students` (`s_name`, `dob`, `gender`, `department_id`, `created_at`, `updated_at`) VALUES ('diksha', '1996-02-21', 'female', 1, '2017-07-05 08:50:53', '2017-07-05 08:50:53')
+   (53.7ms)  COMMIT
+ => #<Student id: 9, s_name: "diksha", dob: "1996-02-21", gender: "female", department_id: 1, created_at: "2017-07-05 08:50:53", updated_at: "2017-07-05 08:50:53"> 
+2.3.1 :019 > Department.find(3).students.create(s_name:"preeti",dob:"1994-07-02",gender:"female")
+  Department Load (0.7ms)  SELECT  `departments`.* FROM `departments` WHERE `departments`.`id` = 3 LIMIT 1
+   (0.4ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO `students` (`s_name`, `dob`, `gender`, `department_id`, `created_at`, `updated_at`) VALUES ('preeti', '1994-07-02', 'female', 3, '2017-07-05 08:53:19', '2017-07-05 08:53:19')
+   (49.9ms)  COMMIT
+ => #<Student id: 10, s_name: "preeti", dob: "1994-07-02", gender: "female", department_id: 3, created_at: "2017-07-05 08:53:19", updated_at: "2017-07-05 08:53:19"> 
+2.3.1 :020 > Department.find(3).students.create(s_name:"mohit",dob:"1995-07-22",gender:"male")
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` WHERE `departments`.`id` = 3 LIMIT 1
+   (0.3ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO `students` (`s_name`, `dob`, `gender`, `department_id`, `created_at`, `updated_at`) VALUES ('mohit', '1995-07-22', 'male', 3, '2017-07-05 08:54:08', '2017-07-05 08:54:08')
+   (110.0ms)  COMMIT
+ => #<Student id: 11, s_name: "mohit", dob: "1995-07-22", gender: "male", department_id: 3, created_at: "2017-07-05 08:54:08", updated_at: "2017-07-05 08:54:08"> 
+2.3.1 :021 > Department.last.students.create(s_name:"mayank",dob:"1995-01-31",gender:"male")
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` ORDER BY `departments`.`id` DESC LIMIT 1
+   (0.3ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO `students` (`s_name`, `dob`, `gender`, `department_id`, `created_at`, `updated_at`) VALUES ('mayank', '1995-01-31', 'male', 4, '2017-07-05 08:54:39', '2017-07-05 08:54:39')
+   (36.2ms)  COMMIT
+ => #<Student id: 12, s_name: "mayank", dob: "1995-01-31", gender: "male", department_id: 4, created_at: "2017-07-05 08:54:39", updated_at: "2017-07-05 08:54:39"> 
+
+2.3.1 :023 > Department.first.books.create(book_name:"TOC",author_name:"Micheal")
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` ORDER BY `departments`.`id` ASC LIMIT 1
+   (0.3ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO `books` (`book_name`, `author_name`, `department_id`, `created_at`, `updated_at`) VALUES ('TOC', 'Micheal', 1, '2017-07-05 08:56:51', '2017-07-05 08:56:51')
+   (54.7ms)  COMMIT
+ => #<Book id: 1, book_name: "TOC", author_name: "Micheal", department_id: 1, created_at: "2017-07-05 08:56:51", updated_at: "2017-07-05 08:56:51"> 
+2.3.1 :024 > Department.first.books.create(book_name:"CD",author_name:"William")
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` ORDER BY `departments`.`id` ASC LIMIT 1
+   (0.3ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO `books` (`book_name`, `author_name`, `department_id`, `created_at`, `updated_at`) VALUES ('CD', 'William', 1, '2017-07-05 08:57:30', '2017-07-05 08:57:30')
+   (107.6ms)  COMMIT
+ => #<Book id: 2, book_name: "CD", author_name: "William", department_id: 1, created_at: "2017-07-05 08:57:30", updated_at: "2017-07-05 08:57:30"> 
+2.3.1 :025 > Department.first.books.create(book_name:"OS",author_name:"William")
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` ORDER BY `departments`.`id` ASC LIMIT 1
+   (0.3ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO `books` (`book_name`, `author_name`, `department_id`, `created_at`, `updated_at`) VALUES ('OS', 'William', 1, '2017-07-05 08:58:17', '2017-07-05 08:58:17')
+   (61.4ms)  COMMIT
+ => #<Book id: 3, book_name: "OS", author_name: "William", department_id: 1, created_at: "2017-07-05 08:58:17", updated_at: "2017-07-05 08:58:17"> 
+2.3.1 :026 > Department.find(2).books.create(book_name:"Thermo",author_name:"Robert")
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` WHERE `departments`.`id` = 2 LIMIT 1
+   (0.3ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO `books` (`book_name`, `author_name`, `department_id`, `created_at`, `updated_at`) VALUES ('Thermo', 'Robert', 2, '2017-07-05 08:58:54', '2017-07-05 08:58:54')2.3.1 :028 > Department.find(2).books.create(book_name:"Turbine",author_name:"Shakes")
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` WHERE `departments`.`id` = 2 LIMIT 1
+   (0.3ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO `books` (`book_name`, `author_name`, `department_id`, `created_at`, `updated_at`) VALUES ('Turbine', 'Shakes', 2, '2017-07-05 08:59:49', '2017-07-05 08:59:49')
+   (61.9ms)  COMMIT
+ => #<Book id: 5, book_name: "Turbine", author_name: "Shakes", department_id: 2, created_at: "2017-07-05 08:59:49", updated_at: "2017-07-05 08:59:49"> 
+2.3.1 :029 > Department.find(2).books.create(book_name:"CAD",author_name:"M.William")
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` WHERE `departments`.`id` = 2 LIMIT 1
+   (0.3ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO `books` (`book_name`, `author_name`, `department_id`, `created_at`, `updated_at`) VALUES ('CAD', 'M.William', 2, '2017-07-05 09:00:36', '2017-07-05 09:00:36')
+   (74.5ms)  COMMIT
+ => #<Book id: 6, book_name: "CAD", author_name: "M.William", department_id: 2, created_at: "2017-07-05 09:00:36", updated_at: "2017-07-05 09:00:36"> 
+2.3.1 :030 > Department.find(3).books.create(book_name:"SemiConductor",author_name:"Martz")
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` WHERE `departments`.`id` = 3 LIMIT 1
+   (0.3ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO `books` (`book_name`, `author_name`, `department_id`, `created_at`, `updated_at`) VALUES ('SemiConductor', 'Martz', 3, '2017-07-05 09:01:38', '2017-07-05 09:01:38')
+   (35.4ms)  COMMIT
+ => #<Book id: 7, book_name: "SemiConductor", author_name: "Martz", department_id: 3, created_at: "2017-07-05 09:01:38", updated_at: "2017-07-05 09:01:38"> 
+2.3.1 :031 > Department.find(3).books.create(book_name:"Electric current",author_name:"Mahul")
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` WHERE `departments`.`id` = 3 LIMIT 1
+   (0.3ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO `books` (`book_name`, `author_name`, `department_id`, `created_at`, `updated_at`) VALUES ('Electric current', 'Mahul', 3, '2017-07-05 09:02:13', '2017-07-05 09:02:13')
+   (94.6ms)  COMMIT
+ => #<Book id: 8, book_name: "Electric current", author_name: "Mahul", department_id: 3, created_at: "2017-07-05 09:02:13", updated_at: "2017-07-05 09:02:13"> 
+2.3.1 :032 > Department.last.books.create(book_name:"Building Material",author_name:"Jia Khan")
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` ORDER BY `departments`.`id` DESC LIMIT 1
+   (0.3ms)  BEGIN
+  SQL (0.4ms)  INSERT INTO `books` (`book_name`, `author_name`, `department_id`, `created_at`, `updated_at`) VALUES ('Building Material', 'Jia Khan', 4, '2017-07-05 09:03:51', '2017-07-05 09:03:51')
+   (61.5ms)  COMMIT
+ => #<Book id: 9, book_name: "Building Material", author_name: "Jia Khan", department_id: 4, created_at: "2017-07-05 09:03:51", updated_at: "2017-07-05 09:03:51"> 
+2.3.1 :033 > Department.last.books.create(book_name:"Construction",author_name:"Rohini")
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` ORDER BY `departments`.`id` DESC LIMIT 1
+   (0.3ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO `books` (`book_name`, `author_name`, `department_id`, `created_at`, `updated_at`) VALUES ('Construction', 'Rohini', 4, '2017-07-05 09:04:19', '2017-07-05 09:04:19')
+   (57.4ms)  COMMIT
+ => #<Book id: 10, book_name: "Construction", author_name: "Rohini", department_id: 4, created_at: "2017-07-05 09:04:19", updated_at: "2017-07-05 09:04:19"> 
+2.3.1 :034 > Department.first.staffs.create(staff_name:"Sonal")
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` ORDER BY `departments`.`id` ASC LIMIT 1
+   (0.2ms)  BEGIN
+  SQL (0.2ms)  INSERT INTO `staffs` (`staff_name`, `department_id`, `created_at`, `updated_at`) VALUES ('Sonal', 1, '2017-07-05 09:05:51', '2017-07-05 09:05:51')
+   (57.5ms)  COMMIT
+ => #<Staff id: 1, staff_name: "Sonal", department_id: 1, created_at: "2017-07-05 09:05:51", updated_at: "2017-07-05 09:05:51"> 
+2.3.1 :035 > Department.first.staffs.create(staff_name:"Sheenu")
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` ORDER BY `departments`.`id` ASC LIMIT 1
+   (0.3ms)  BEGIN
+  SQL (0.5ms)  INSERT INTO `staffs` (`staff_name`, `department_id`, `created_at`, `updated_at`) VALUES ('Sheenu', 1, '2017-07-05 09:06:00', '2017-07-05 09:06:00')
+   (109.4ms)  COMMIT
+ => #<Staff id: 2, staff_name: "Sheenu", department_id: 1, created_at: "2017-07-05 09:06:00", updated_at: "2017-07-05 09:06:00"> 
+2.3.1 :036 > Department.last.staffs.create(staff_name:"Bhramchari")
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` ORDER BY `departments`.`id` DESC LIMIT 1
+   (0.3ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO `staffs` (`staff_name`, `department_id`, `created_at`, `updated_at`) VALUES ('Bhramchari', 4, '2017-07-05 09:06:23', '2017-07-05 09:06:23')
+   (57.3ms)  COMMIT
+ => #<Staff id: 3, staff_name: "Bhramchari", department_id: 4, created_at: "2017-07-05 09:06:23", updated_at: "2017-07-05 09:06:23"> 
+2.3.1 :037 > Department.find(3).staffs.create(staff_name:"Anuj Attri")
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` WHERE `departments`.`id` = 3 LIMIT 1
+   (0.3ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO `staffs` (`staff_name`, `department_id`, `created_at`, `updated_at`) VALUES ('Anuj Attri', 3, '2017-07-05 09:06:53', '2017-07-05 09:06:53')
+   (108.2ms)  COMMIT
+ => #<Staff id: 4, staff_name: "Anuj Attri", department_id: 3, created_at: "2017-07-05 09:06:53", updated_at: "2017-07-05 09:06:53"> 
+2.3.1 :038 > Department.find(2).staffs.create(staff_name:"Chhagar")
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` WHERE `departments`.`id` = 2 LIMIT 1
+   (0.3ms)  BEGIN
+  SQL (0.3ms)  INSERT INTO `staffs` (`staff_name`, `department_id`, `created_at`, `updated_at`) VALUES ('Chhagar', 2, '2017-07-05 09:07:21', '2017-07-05 09:07:21')
+   (62.0ms)  COMMIT
+ => #<Staff id: 5, staff_name: "Chhagar", department_id: 2, created_at: "2017-07-05 09:07:21", updated_at: "2017-07-05 09:07:21"> 
+2.3.1 :039 > s=Student.first
+  Student Load (0.6ms)  SELECT  `students`.* FROM `students` ORDER BY `students`.`id` ASC LIMIT 1
+ => #<Student id: 1, s_name: "dillep", dob: "1995-05-03", gender: "male", department_id: 1, created_at: "2017-07-05 08:43:11", updated_at: "2017-07-05 08:43:11"> 
+
+   (96.4ms)  COMMIT
+ => #<Book id: 4, book_name: "Thermo", author_name: "Robert", department_id: 2, created_at: "2017-07-05 08:58:54", updated_at: "2017-07-05 08:58:54"> 
+2.3.1 :027 > Department.find(2)books.create(book_name:"Turbine",author_name:"Shakes")
+2.3.1 :005 > Record.create(issued_date:"2017-01-10",sub_date:"2017-03-08",book_id:4,student_id:7,staff_id:2)
+   (0.3ms)  BEGIN
+  Book Load (0.2ms)  SELECT  `books`.* FROM `books` WHERE `books`.`id` = 4 LIMIT 1
+  Student Load (0.2ms)  SELECT  `students`.* FROM `students` WHERE `students`.`id` = 7 LIMIT 1
+  Staff Load (0.3ms)  SELECT  `staffs`.* FROM `staffs` WHERE `staffs`.`id` = 2 LIMIT 1
+  SQL (0.3ms)  INSERT INTO `records` (`issued_date`, `sub_date`, `book_id`, `student_id`, `staff_id`, `created_at`, `updated_at`) VALUES ('2017-01-10', '2017-03-08', 4, 7, 2, '2017-07-05 09:15:38', '2017-07-05 09:15:38')
+   (40.1ms)  COMMIT
+ => #<Record id: 1, issued_date: "2017-01-10", sub_date: "2017-03-08", book_id: 4, student_id: 7, staff_id: 2, created_at: "2017-07-05 09:15:38", updated_at: "2017-07-05 09:15:38"> 
+
+ 2.3.1 :007 > Record.create(issued_date:"2017-05-02",sub_date:"2017-06-15",book_id:5,student_id:5,staff_id:2)
+   (0.3ms)  BEGIN
+  Book Load (0.5ms)  SELECT  `books`.* FROM `books` WHERE `books`.`id` = 5 LIMIT 1
+  Student Load (0.5ms)  SELECT  `students`.* FROM `students` WHERE `students`.`id` = 5 LIMIT 1
+  Staff Load (0.5ms)  SELECT  `staffs`.* FROM `staffs` WHERE `staffs`.`id` = 2 LIMIT 1
+  SQL (0.5ms)  INSERT INTO `records` (`issued_date`, `sub_date`, `book_id`, `student_id`, `staff_id`, `created_at`, `updated_at`) VALUES ('2017-05-02', '2017-06-15', 5, 5, 2, '2017-07-05 09:18:04', '2017-07-05 09:18:04')
+   (107.5ms)  COMMIT
+ => #<Record id: 2, issued_date: "2017-05-02", sub_date: "2017-06-15", book_id: 5, student_id: 5, staff_id: 2, created_at: "2017-07-05 09:18:04", updated_at: "2017-07-05 09:18:04"> 
+2.3.1 :008 > Record.create(issued_date:"2016-03-22",sub_date:"2016-04-15",book_id:2,student_id:4,staff_id:1)
+   (0.3ms)  BEGIN
+  Book Load (0.5ms)  SELECT  `books`.* FROM `books` WHERE `books`.`id` = 2 LIMIT 1
+  Student Load (0.2ms)  SELECT  `students`.* FROM `students` WHERE `students`.`id` = 4 LIMIT 1
+  Staff Load (0.2ms)  SELECT  `staffs`.* FROM `staffs` WHERE `staffs`.`id` = 1 LIMIT 1
+  SQL (0.3ms)  INSERT INTO `records` (`issued_date`, `sub_date`, `book_id`, `student_id`, `staff_id`, `created_at`, `updated_at`) VALUES ('2016-03-22', '2016-04-15', 2, 4, 1, '2017-07-05 09:18:32', '2017-07-05 09:18:32')
+   (54.4ms)  COMMIT
+ => #<Record id: 3, issued_date: "2016-03-22", sub_date: "2016-04-15", book_id: 2, student_id: 4, staff_id: 1, created_at: "2017-07-05 09:18:32", updated_at: "2017-07-05 09:18:32"> 
+2.3.1 :009 > Record.create(issued_date:"2017-03-22",sub_date:"2016-11-16",book_id:1,student_id:5,staff_id:3)
+   (0.3ms)  BEGIN
+  Book Load (0.5ms)  SELECT  `books`.* FROM `books` WHERE `books`.`id` = 1 LIMIT 1
+  Student Load (0.5ms)  SELECT  `students`.* FROM `students` WHERE `students`.`id` = 5 LIMIT 1
+  Staff Load (0.5ms)  SELECT  `staffs`.* FROM `staffs` WHERE `staffs`.`id` = 3 LIMIT 1
+  SQL (0.5ms)  INSERT INTO `records` (`issued_date`, `sub_date`, `book_id`, `student_id`, `staff_id`, `created_at`, `updated_at`) VALUES ('2017-03-22', '2016-11-16', 1, 5, 3, '2017-07-05 09:18:48', '2017-07-05 09:18:48')
+   (84.4ms)  COMMIT
+ => #<Record id: 4, issued_date: "2017-03-22", sub_date: "2016-11-16", book_id: 1, student_id: 5, staff_id: 3, created_at: "2017-07-05 09:18:48", updated_at: "2017-07-05 09:18:48"> 
+2.3.1 :010 > Record.create(issued_date:"2017-03-23",sub_date:"2017-05-16",book_id:3,student_id:1,staff_id:2)
+   (0.3ms)  BEGIN
+  Book Load (0.6ms)  SELECT  `books`.* FROM `books` WHERE `books`.`id` = 3 LIMIT 1
+  Student Load (0.5ms)  SELECT  `students`.* FROM `students` WHERE `students`.`id` = 1 LIMIT 1
+  Staff Load (0.5ms)  SELECT  `staffs`.* FROM `staffs` WHERE `staffs`.`id` = 2 LIMIT 1
+  SQL (0.5ms)  INSERT INTO `records` (`issued_date`, `sub_date`, `book_id`, `student_id`, `staff_id`, `created_at`, `updated_at`) VALUES ('2017-03-23', '2017-05-16', 3, 1, 2, '2017-07-05 09:18:59', '2017-07-05 09:18:59')
+   (61.0ms)  COMMIT
+ => #<Record id: 5, issued_date: "2017-03-23", sub_date: "2017-05-16", book_id: 3, student_id: 1, staff_id: 2, created_at: "2017-07-05 09:18:59", updated_at: "2017-07-05 09:18:59"> 
+2.3.1 :011 > Record.create(issued_date:"2017-02-25",sub_date:"2017-04-21",book_id:3,student_id:3,staff_id:4)
+   (0.3ms)  BEGIN
+  Book Load (0.7ms)  SELECT  `books`.* FROM `books` WHERE `books`.`id` = 3 LIMIT 1
+  Student Load (0.6ms)  SELECT  `students`.* FROM `students` WHERE `students`.`id` = 3 LIMIT 1
+  Staff Load (0.5ms)  SELECT  `staffs`.* FROM `staffs` WHERE `staffs`.`id` = 4 LIMIT 1
+  SQL (0.5ms)  INSERT INTO `records` (`issued_date`, `sub_date`, `book_id`, `student_id`, `staff_id`, `created_at`, `updated_at`) VALUES ('2017-02-25', '2017-04-21', 3, 3, 4, '2017-07-05 09:19:17', '2017-07-05 09:19:17')
+   (112.5ms)  COMMIT
+ => #<Record id: 6, issued_date: "2017-02-25", sub_date: "2017-04-21", book_id: 3, student_id: 3, staff_id: 4, created_at: "2017-07-05 09:19:17", updated_at: "2017-07-05 09:19:17"> 
+2.3.1 :012 > Record.create(issued_date:"2017-05-14",sub_date:"2017-06-02",book_id:6,student_id:4,staff_id:3)
+   (0.3ms)  BEGIN
+  Book Load (0.5ms)  SELECT  `books`.* FROM `books` WHERE `books`.`id` = 6 LIMIT 1
+  Student Load (0.2ms)  SELECT  `students`.* FROM `students` WHERE `students`.`id` = 4 LIMIT 1
+  Staff Load (0.2ms)  SELECT  `staffs`.* FROM `staffs` WHERE `staffs`.`id` = 3 LIMIT 1
+  SQL (0.3ms)  INSERT INTO `records` (`issued_date`, `sub_date`, `book_id`, `student_id`, `staff_id`, `created_at`, `updated_at`) VALUES ('2017-05-14', '2017-06-02', 6, 4, 3, '2017-07-05 09:19:32', '2017-07-05 09:19:32')
+   (59.8ms)  COMMIT
+ => #<Record id: 7, issued_date: "2017-05-14", sub_date: "2017-06-02", book_id: 6, student_id: 4, staff_id: 3, created_at: "2017-07-05 09:19:32", updated_at: "2017-07-05 09:19:32"> 
+2.3.1 :013 > Record.create(issued_date:"2017-04-12",sub_date:"2017-05-16",book_id:7,student_id:6,staff_id:2)
+   (0.3ms)  BEGIN
+  Book Load (0.6ms)  SELECT  `books`.* FROM `books` WHERE `books`.`id` = 7 LIMIT 1
+  Student Load (0.5ms)  SELECT  `students`.* FROM `students` WHERE `students`.`id` = 6 LIMIT 1
+  Staff Load (0.5ms)  SELECT  `staffs`.* FROM `staffs` WHERE `staffs`.`id` = 2 LIMIT 1
+  SQL (0.5ms)  INSERT INTO `records` (`issued_date`, `sub_date`, `book_id`, `student_id`, `staff_id`, `created_at`, `updated_at`) VALUES ('2017-04-12', '2017-05-16', 7, 6, 2, '2017-07-05 09:19:56', '2017-07-05 09:19:56')
+   (115.0ms)  COMMIT
+ => #<Record id: 8, issued_date: "2017-04-12", sub_date: "2017-05-16", book_id: 7, student_id: 6, staff_id: 2, created_at: "2017-07-05 09:19:56", updated_at: "2017-07-05 09:19:56"> 
+2.3.1 :014 > Record.create(issued_date:"2017-03-12",sub_date:"2017-05-06",book_id:8,student_id:8,staff_id:1)
+   (0.3ms)  BEGIN
+  Book Load (0.6ms)  SELECT  `books`.* FROM `books` WHERE `books`.`id` = 8 LIMIT 1
+  Student Load (0.5ms)  SELECT  `students`.* FROM `students` WHERE `students`.`id` = 8 LIMIT 1
+  Staff Load (0.5ms)  SELECT  `staffs`.* FROM `staffs` WHERE `staffs`.`id` = 1 LIMIT 1
+  SQL (0.5ms)  INSERT INTO `records` (`issued_date`, `sub_date`, `book_id`, `student_id`, `staff_id`, `created_at`, `updated_at`) VALUES ('2017-03-12', '2017-05-06', 8, 8, 1, '2017-07-05 09:20:43', '2017-07-05 09:20:43')
+   (35.7ms)  COMMIT
+ => #<Record id: 9, issued_date: "2017-03-12", sub_date: "2017-05-06", book_id: 8, student_id: 8, staff_id: 1, created_at: "2017-07-05 09:20:43", updated_at: "2017-07-05 09:20:43"> 
+2.3.1 :015 > Record.create(issued_date:"2017-02-12",sub_date:"2017-03-08",book_id:9,student_id:9,staff_id:2)
+   (0.3ms)  BEGIN
+  Book Load (0.6ms)  SELECT  `books`.* FROM `books` WHERE `books`.`id` = 9 LIMIT 1
+  Student Load (0.5ms)  SELECT  `students`.* FROM `students` WHERE `students`.`id` = 9 LIMIT 1
+  Staff Load (0.5ms)  SELECT  `staffs`.* FROM `staffs` WHERE `staffs`.`id` = 2 LIMIT 1
+  SQL (0.5ms)  INSERT INTO `records` (`issued_date`, `sub_date`, `book_id`, `student_id`, `staff_id`, `created_at`, `updated_at`) VALUES ('2017-02-12', '2017-03-08', 9, 9, 2, '2017-07-05 09:21:17', '2017-07-05 09:21:17')
+   (59.4ms)  COMMIT
+
+    => #<Record id: 10, issued_date: "2017-02-12", sub_date: "2017-03-08", book_id: 9, student_id: 9, staff_id: 2, created_at: "2017-07-05 09:21:17", updated_at: "2017-07-05 09:21:17"> 
+2.3.1 :016 > Record.create(issued_date:"2017-02-12",sub_date:"2017-03-08",book_id:8,student_id:2,staff_id:1)
+   (0.3ms)  BEGIN
+  Book Load (0.4ms)  SELECT  `books`.* FROM `books` WHERE `books`.`id` = 8 LIMIT 1
+  Student Load (0.2ms)  SELECT  `students`.* FROM `students` WHERE `students`.`id` = 2 LIMIT 1
+  Staff Load (0.2ms)  SELECT  `staffs`.* FROM `staffs` WHERE `staffs`.`id` = 1 LIMIT 1
+  SQL (0.2ms)  INSERT INTO `records` (`issued_date`, `sub_date`, `book_id`, `student_id`, `staff_id`, `created_at`, `updated_at`) VALUES ('2017-02-12', '2017-03-08', 8, 2, 1, '2017-07-05 09:21:33', '2017-07-05 09:21:33')
+   (100.5ms)  COMMIT
+ => #<Record id: 11, issued_date: "2017-02-12", sub_date: "2017-03-08", book_id: 8, student_id: 2, staff_id: 1, created_at: "2017-07-05 09:21:33", updated_at: "2017-07-05 09:21:33"> 
+2.3.1 :017 > Record.find(1)
+ Record Load (0.6ms)  SELECT  `records`.* FROM `records` WHERE `records`.`id` = 1 LIMIT 1
+ => #<Record id: 1, issued_date: "2017-01-10", sub_date: "2017-03-08", book_id: 4, student_id: 7, staff_id: 2, created_at: "2017-07-05 09:15:38", updated_at: "2017-07-05 09:15:38"> 
+2.3.1 :018 > r=Record.find(1)
+  Record Load (0.6ms)  SELECT  `records`.* FROM `records` WHERE `records`.`id` = 1 LIMIT 1
+ => #<Record id: 1, issued_date: "2017-01-10", sub_date: "2017-03-08", book_id: 4, student_id: 7, staff_id: 2, created_at: "2017-07-05 09:15:38", updated_at: "2017-07-05 09:15:38"> 
+2.3.1 :019 > Department.first.staffs
+  Department Load (0.2ms)  SELECT  `departments`.* FROM `departments` ORDER BY `departments`.`id` ASC LIMIT 1
+  Staff Load (0.3ms)  SELECT `staffs`.* FROM `staffs` WHERE `staffs`.`department_id` = 1
+ => #<ActiveRecord::Associations::CollectionProxy [#<Staff id: 1, staff_name: "Sonal", department_id: 1, created_at: "2017-07-05 09:05:51", updated_at: "2017-07-05 09:05:51">, #<Staff id: 2, staff_name: "Sheenu", department_id: 1, created_at: "2017-07-05 09:06:00", updated_at: "2017-07-05 09:06:00">]> 
+2.3.1 :020 > Department.find(2).staffs
+  Department Load (0.6ms)  SELECT  `departments`.* FROM `departments` WHERE `departments`.`id` = 2 LIMIT 1
+  Staff Load (0.7ms)  SELECT `staffs`.* FROM `staffs` WHERE `staffs`.`department_id` = 2
+ => #<ActiveRecord::Associations::CollectionProxy [#<Staff id: 5, staff_name: "Chhagar", department_id: 2, created_at: "2017-07-05 09:07:21", updated_at: "2017-07-05 09:07:21">]> 
+
